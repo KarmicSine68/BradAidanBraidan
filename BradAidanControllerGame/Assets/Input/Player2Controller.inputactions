@@ -1,0 +1,34 @@
+{
+    "name": "Player2Controller",
+    "maps": [
+        {
+            "name": "Player2Actions",
+            "id": "8534d5e0-e442-44be-80d1-c0a9e9236712",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Value",
+                    "id": "200355d2-b6d8-4a44-bda9-0adcdfd60fce",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ad3d6d12-c9a1-4861-8edc-252303589e2e",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
