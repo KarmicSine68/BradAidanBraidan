@@ -15,6 +15,39 @@ public class PlayerBehaviour : MonoBehaviour
 {
     Vector2 movement;
     Rigidbody2D rb2D;
+    [SerializeField] float speed = 150;
+    [SerializeField] string className;
+    string type;
+
+    /// <summary>
+    /// Finds the name of a gameObject that the player is colliding with
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        type = collision.name;
+        MyName();
+    }
+
+    /// <summary>
+    /// Takes the name of the gameObject and changes the class accordingly
+    /// </summary>
+    private void MyName()
+    {
+        switch(type)
+        {
+            case "Fighter":
+                gameObject.GetComponent<Ranger>().enabled = false;
+                gameObject.GetComponent<Warrior>().enabled = true;
+                break;
+            case "Mage":
+                gameObject.GetComponent<Warrior>().enabled = false;
+                gameObject.GetComponent<Ranger>().enabled = true;
+                break;
+            default:
+                break;
+        }
+    }
 
     /// <summary>
     /// Listens to the entire action map to see when the player uses an action.
@@ -38,7 +71,7 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-            Vector2 moveVelocity = new Vector2(movement.x, movement.y) * 150f
+            Vector2 moveVelocity = new Vector2(movement.x, movement.y) * speed
                 * Time.deltaTime;
             rb2D.velocity = moveVelocity;
     }
