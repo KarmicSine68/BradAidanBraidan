@@ -37,9 +37,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Movement2"",
+                    ""name"": ""Rotate"",
                     ""type"": ""Value"",
-                    ""id"": ""d031c7f4-010f-4c0e-9689-18e943c3f115"",
+                    ""id"": ""86a5cc51-56aa-4d47-8e1a-41a49aa07210"",
                     ""expectedControlType"": ""Stick"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -60,12 +60,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""062bbe1c-4f1e-415b-b15d-76a261a90678"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""id"": ""0df0a6b0-31b8-49d2-8e44-4d94aefa800e"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement2"",
+                    ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -77,7 +77,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // PlayerActions
         m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
         m_PlayerActions_Movement = m_PlayerActions.FindAction("Movement", throwIfNotFound: true);
-        m_PlayerActions_Movement2 = m_PlayerActions.FindAction("Movement2", throwIfNotFound: true);
+        m_PlayerActions_Rotate = m_PlayerActions.FindAction("Rotate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -138,13 +138,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerActions;
     private IPlayerActionsActions m_PlayerActionsActionsCallbackInterface;
     private readonly InputAction m_PlayerActions_Movement;
-    private readonly InputAction m_PlayerActions_Movement2;
+    private readonly InputAction m_PlayerActions_Rotate;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerActions_Movement;
-        public InputAction @Movement2 => m_Wrapper.m_PlayerActions_Movement2;
+        public InputAction @Rotate => m_Wrapper.m_PlayerActions_Rotate;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -157,9 +157,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMovement;
-                @Movement2.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMovement2;
-                @Movement2.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMovement2;
-                @Movement2.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMovement2;
+                @Rotate.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRotate;
+                @Rotate.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRotate;
+                @Rotate.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRotate;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -167,9 +167,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
-                @Movement2.started += instance.OnMovement2;
-                @Movement2.performed += instance.OnMovement2;
-                @Movement2.canceled += instance.OnMovement2;
+                @Rotate.started += instance.OnRotate;
+                @Rotate.performed += instance.OnRotate;
+                @Rotate.canceled += instance.OnRotate;
             }
         }
     }
@@ -177,6 +177,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IPlayerActionsActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnMovement2(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
     }
 }
