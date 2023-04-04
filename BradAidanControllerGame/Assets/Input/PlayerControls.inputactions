@@ -15,9 +15,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Movement2",
+                    "name": "Rotate",
                     "type": "Value",
-                    "id": "d031c7f4-010f-4c0e-9689-18e943c3f115",
+                    "id": "86a5cc51-56aa-4d47-8e1a-41a49aa07210",
                     "expectedControlType": "Stick",
                     "processors": "",
                     "interactions": "",
@@ -38,12 +38,12 @@
                 },
                 {
                     "name": "",
-                    "id": "062bbe1c-4f1e-415b-b15d-76a261a90678",
-                    "path": "<Gamepad>/rightStick",
+                    "id": "0df0a6b0-31b8-49d2-8e44-4d94aefa800e",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement2",
+                    "action": "Rotate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

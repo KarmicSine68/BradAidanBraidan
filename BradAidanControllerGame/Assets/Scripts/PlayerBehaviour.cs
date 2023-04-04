@@ -13,6 +13,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    InputActionAsset inputAsset;
+    InputActionMap inputMap;
+    InputAction move;
+
     Vector2 movement;
     Rigidbody2D rb2D;
     [SerializeField] float speed = 150;
@@ -50,20 +54,32 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// Listens to the entire action map to see when the player uses an action.
-    /// Allows for indivudal input for different controllers.
-    /// </summary>
-    /// <param name="ctx"></param>
-    public void Move(InputAction.CallbackContext ctx) 
-        => movement = ctx.ReadValue<Vector2>();
-
-    /// <summary>
     /// Detects input and executes code
     /// </summary>
     private void Awake()
     {
+        inputAsset = this.GetComponent<PlayerInput>().actions;
+        inputMap = inputAsset.FindActionMap("PlayerActions");
+        move = inputMap.FindAction("Movement");
+
+        move.performed += ctx => movement = ctx.ReadValue<Vector2>();
+        move.performed += ctx => Orientation();
+        move.canceled += ctx => movement = Vector2.zero;
+
         rb2D = GetComponent<Rigidbody2D>();
         rb2D.freezeRotation = true;
+    }
+
+    private void Orientation()
+    {
+        if(movement.x < 0)
+        {
+
+        }
+        else if(movement.x > 0)
+        {
+
+        }
     }
 
     /// <summary>
@@ -71,8 +87,24 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-            Vector2 moveVelocity = new Vector2(movement.x, movement.y) * speed
-                * Time.deltaTime;
-            rb2D.velocity = moveVelocity;
+        Vector2 moveVelocity = new Vector2(movement.x, movement.y) * 5f
+            * Time.deltaTime;
+        transform.Translate(moveVelocity, Space.World);
+    }
+
+    /// <summary>
+    /// Allows for the code to recieve player inputs
+    /// </summary>
+    private void OnEnable()
+    {
+        inputMap.Enable();
+    }
+
+    /// <summary>
+    /// Stops the code from recieving player input
+    /// </summary>
+    private void OnDisable()
+    {
+        inputMap.Disable();
     }
 }
