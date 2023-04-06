@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 150
   className: 
+  facingLeft: 0
 --- !u!50 &341275253
 Rigidbody2D:
   serializedVersion: 4
@@ -426,7 +427,7 @@ GameObject:
   - component: {fileID: 965580727}
   m_Layer: 0
   m_Name: Knight_enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
