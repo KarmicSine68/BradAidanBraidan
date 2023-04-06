@@ -22,7 +22,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] float speed = 150;
     [SerializeField] string className;
     string type;
-    bool facingLeft;
+    public bool facingLeft;
 
     /// <summary>
     /// Finds the name of a gameObject that the player is colliding with

@@ -44,6 +44,33 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Light"",
+                    ""type"": ""Button"",
+                    ""id"": ""849ba009-d388-49e7-811f-b09eb25b7230"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Medium"",
+                    ""type"": ""Button"",
+                    ""id"": ""fcf426db-1db7-448c-84fb-f5e667c606f2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Heavy"",
+                    ""type"": ""Button"",
+                    ""id"": ""1fa2646c-418f-4cb9-80e5-ef904d1c3102"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -68,6 +95,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da233dcb-ffe5-432f-a996-50fb33b20450"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Light"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eba3bfe4-7ea2-45ba-a0e9-7048da7fdb80"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Medium"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f6bb6c4-1543-4a07-bb74-d9aa230f7539"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Heavy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -78,6 +138,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
         m_PlayerActions_Movement = m_PlayerActions.FindAction("Movement", throwIfNotFound: true);
         m_PlayerActions_Rotate = m_PlayerActions.FindAction("Rotate", throwIfNotFound: true);
+        m_PlayerActions_Light = m_PlayerActions.FindAction("Light", throwIfNotFound: true);
+        m_PlayerActions_Medium = m_PlayerActions.FindAction("Medium", throwIfNotFound: true);
+        m_PlayerActions_Heavy = m_PlayerActions.FindAction("Heavy", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -139,12 +202,18 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IPlayerActionsActions m_PlayerActionsActionsCallbackInterface;
     private readonly InputAction m_PlayerActions_Movement;
     private readonly InputAction m_PlayerActions_Rotate;
+    private readonly InputAction m_PlayerActions_Light;
+    private readonly InputAction m_PlayerActions_Medium;
+    private readonly InputAction m_PlayerActions_Heavy;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerActions_Movement;
         public InputAction @Rotate => m_Wrapper.m_PlayerActions_Rotate;
+        public InputAction @Light => m_Wrapper.m_PlayerActions_Light;
+        public InputAction @Medium => m_Wrapper.m_PlayerActions_Medium;
+        public InputAction @Heavy => m_Wrapper.m_PlayerActions_Heavy;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -160,6 +229,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Rotate.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRotate;
                 @Rotate.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRotate;
                 @Rotate.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRotate;
+                @Light.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLight;
+                @Light.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLight;
+                @Light.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLight;
+                @Medium.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMedium;
+                @Medium.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMedium;
+                @Medium.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMedium;
+                @Heavy.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHeavy;
+                @Heavy.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHeavy;
+                @Heavy.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHeavy;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -170,6 +248,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Rotate.started += instance.OnRotate;
                 @Rotate.performed += instance.OnRotate;
                 @Rotate.canceled += instance.OnRotate;
+                @Light.started += instance.OnLight;
+                @Light.performed += instance.OnLight;
+                @Light.canceled += instance.OnLight;
+                @Medium.started += instance.OnMedium;
+                @Medium.performed += instance.OnMedium;
+                @Medium.canceled += instance.OnMedium;
+                @Heavy.started += instance.OnHeavy;
+                @Heavy.performed += instance.OnHeavy;
+                @Heavy.canceled += instance.OnHeavy;
             }
         }
     }
@@ -178,5 +265,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
+        void OnLight(InputAction.CallbackContext context);
+        void OnMedium(InputAction.CallbackContext context);
+        void OnHeavy(InputAction.CallbackContext context);
     }
 }
