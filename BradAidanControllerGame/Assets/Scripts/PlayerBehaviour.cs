@@ -22,6 +22,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] float speed = 150;
     [SerializeField] string className;
     string type;
+    bool facingLeft;
 
     /// <summary>
     /// Finds the name of a gameObject that the player is colliding with
@@ -67,18 +68,35 @@ public class PlayerBehaviour : MonoBehaviour
         move.canceled += ctx => movement = Vector2.zero;
 
         rb2D = GetComponent<Rigidbody2D>();
-        rb2D.freezeRotation = true;
+
+        facingLeft = false;
     }
 
     private void Orientation()
     {
-        if(movement.x < 0)
+        if (facingLeft)
         {
-
+            if (movement.x > 0)
+            {
+                transform.Rotate(0f, 180f, 0f);
+                facingLeft = false;
+            }
+            else if (movement.x < 0)
+            {
+                transform.Rotate(Vector3.zero);
+            }
         }
-        else if(movement.x > 0)
+        else
         {
-
+            if (movement.x < 0)
+            {
+                transform.Rotate(0f, 180f, 0f);
+                facingLeft = true;
+            }
+            else if (movement.x > 0)
+            {
+                transform.Rotate(Vector3.zero);
+            }
         }
     }
 

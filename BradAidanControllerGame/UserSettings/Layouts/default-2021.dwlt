@@ -76,7 +76,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 60
+  controlID: 17
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 65
+  controlID: 18
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 66
+  controlID: 19
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -369,8 +369,8 @@ MonoBehaviour:
       \"type\": \"Value\",\n                    \"id\": \"a84633a7-470a-4b68-84bf-eaebc16188da\",\n                   
       \"expectedControlType\": \"Stick\",\n                    \"processors\": \"\",\n                   
       \"interactions\": \"\",\n                    \"initialStateCheck\": true\n               
-      },\n                {\n                    \"name\": \"Movement2\",\n                   
-      \"type\": \"Value\",\n                    \"id\": \"d031c7f4-010f-4c0e-9689-18e943c3f115\",\n                   
+      },\n                {\n                    \"name\": \"Rotate\",\n                   
+      \"type\": \"Value\",\n                    \"id\": \"86a5cc51-56aa-4d47-8e1a-41a49aa07210\",\n                   
       \"expectedControlType\": \"Stick\",\n                    \"processors\": \"\",\n                   
       \"interactions\": \"\",\n                    \"initialStateCheck\": true\n               
       }\n            ],\n            \"bindings\": [\n                {\n                   
@@ -379,12 +379,12 @@ MonoBehaviour:
       \"processors\": \"\",\n                    \"groups\": \"\",\n                   
       \"action\": \"Movement\",\n                    \"isComposite\": false,\n                   
       \"isPartOfComposite\": false\n                },\n                {\n                   
-      \"name\": \"\",\n                    \"id\": \"062bbe1c-4f1e-415b-b15d-76a261a90678\",\n                   
-      \"path\": \"<Gamepad>/rightStick\",\n                    \"interactions\":
-      \"\",\n                    \"processors\": \"\",\n                    \"groups\":
-      \"\",\n                    \"action\": \"Movement2\",\n                   
-      \"isComposite\": false,\n                    \"isPartOfComposite\": false\n               
-      }\n            ]\n        }\n    ],\n    \"controlSchemes\": []\n}"
+      \"name\": \"\",\n                    \"id\": \"0df0a6b0-31b8-49d2-8e44-4d94aefa800e\",\n                   
+      \"path\": \"<Gamepad>/leftStick\",\n                    \"interactions\": \"\",\n                   
+      \"processors\": \"\",\n                    \"groups\": \"\",\n                   
+      \"action\": \"Rotate\",\n                    \"isComposite\": false,\n                   
+      \"isPartOfComposite\": false\n                }\n            ]\n        }\n   
+      ],\n    \"controlSchemes\": []\n}"
     m_IsDirty: 0
   m_Toolbar:
     m_IsDirty: 0
@@ -454,9 +454,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 1e630000
-    m_LastClickedID: 25374
-    m_ExpandedIDs: 000000006c620000f26a000000ca9a3b
+    m_SelectedIDs: a2620000
+    m_LastClickedID: 25250
+    m_ExpandedIDs: 000000007662000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -484,7 +484,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000006c620000
+    m_ExpandedIDs: 0000000076620000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -511,7 +511,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300009e620000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -612,9 +612,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: bec3ffff
-      m_LastClickedID: -15426
-      m_ExpandedIDs: 20fbffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 28fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -885,9 +885,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 0, z: 0}
+    m_Target: {x: -0.8143186, y: -2.6037297, z: 0.042617463}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0}
+    m_Value: {x: -0.8143186, y: -2.6037297, z: 0.042617463}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -938,9 +938,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 10
+    m_Target: 5.1957173
     speed: 2
-    m_Value: 10
+    m_Value: 5.1957173
   m_Ortho:
     m_Target: 1
     speed: 2
