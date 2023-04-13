@@ -31,6 +31,34 @@ public class HealthScript : MonoBehaviour
             health = 0;
             Die();
         }
+        if (health == 100)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = HealthSprite1;
+        }
+        if (health == 90)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = HealthSprite2;
+        }
+        if (health == 80)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = HealthSprite3;
+        }
+        if (health == 70)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = HealthSprite4;
+        }
+        if (health == 60)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = HealthSprite5;
+        }
+        if (health == 50)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = HealthSprite6;
+        }
+        if (health == 40)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = HealthSprite7;
+        }
     }
 
     public void Damage(int amount)
