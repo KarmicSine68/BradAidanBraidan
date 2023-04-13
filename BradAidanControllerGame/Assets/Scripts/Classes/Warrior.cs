@@ -2,7 +2,6 @@
 // File Name :         Warrior.cs
 // Author :            Brad Dixon
 // Creation Date :     March 28th, 2023
-//
 // Brief Description : Data for the warrior
 *****************************************************************************/
 using System.Collections;
