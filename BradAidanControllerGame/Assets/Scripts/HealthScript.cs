@@ -6,6 +6,15 @@ public class HealthScript : MonoBehaviour
 {
     public int maxhealth = 100;
     public int health = 100;
+    public Sprite HealthSprite1;
+    public Sprite HealthSprite2;
+    public Sprite HealthSprite3;
+    public Sprite HealthSprite4;
+    public Sprite HealthSprite5;
+    public Sprite HealthSprite6;
+    public Sprite HealthSprite7;
+    public Sprite HealthSprite8;
+    public Sprite HealthSprite9;
 
     private void Start()
     {
