@@ -10,6 +10,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Sprites;
+
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -21,7 +23,8 @@ public class PlayerBehaviour : MonoBehaviour
     Rigidbody2D rb2D;
     [SerializeField] float speed = 150;
     [SerializeField] string className;
-    string type;
+    [SerializeField] private Sprite Sprite1;
+    [SerializeField] private Sprite Sprite2;
     public bool facingLeft;
 
     /// <summary>
@@ -30,24 +33,32 @@ public class PlayerBehaviour : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        type = collision.name;
-        MyName();
+        MyName(collision.gameObject.name);
     }
 
     /// <summary>
     /// Takes the name of the gameObject and changes the class accordingly
     /// </summary>
-    private void MyName()
+    private void MyName(string type)
     {
         switch(type)
         {
             case "Fighter":
                 gameObject.GetComponent<Ranger>().enabled = false;
                 gameObject.GetComponent<Warrior>().enabled = true;
+                gameObject.GetComponent<Mage>().enabled = false;
+                gameObject.GetComponent<SpriteRenderer>().sprite = Sprite2;
                 break;
             case "Mage":
                 gameObject.GetComponent<Warrior>().enabled = false;
+                gameObject.GetComponent<Ranger>().enabled = false;
+                gameObject.GetComponent<Mage>().enabled = true;
+                gameObject.GetComponent<SpriteRenderer>().sprite = Sprite1;
+                break;
+            case "Ranger":
                 gameObject.GetComponent<Ranger>().enabled = true;
+                gameObject.GetComponent<Warrior>().enabled = false;
+                gameObject.GetComponent<Mage>().enabled = false;
                 break;
             default:
                 break;

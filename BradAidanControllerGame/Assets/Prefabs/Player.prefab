@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5530120403422460679}
   - component: {fileID: 545306854083311190}
   - component: {fileID: -4298160447811276586}
+  - component: {fileID: 5750795456082626397}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -104,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 150
   className: 
+  facingLeft: 0
 --- !u!50 &5517215403573969703
 Rigidbody2D:
   serializedVersion: 4
@@ -229,3 +231,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   className: 
+  meleeWeapon: {fileID: 0}
+--- !u!114 &5750795456082626397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5517215403573969755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e3fcf7fdacc604bac01eb726dc565f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  className: 
+  player: {fileID: 5517215403573969755}
+  MagicPrefab: {fileID: 4456747234599977050, guid: 3211f96da1ded624c9f226fe284482ff, type: 3}
+  ProjectileSpeed: 30
