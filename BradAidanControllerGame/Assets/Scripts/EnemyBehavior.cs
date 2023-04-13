@@ -11,12 +11,16 @@ public class EnemyBehavior : MonoBehaviour
     public GameObject enemyPrefab;
     public float respawnTime = 1.0f;
     private SpriteRenderer mySpriteRenderer;
+    public int damage;
+    public HealthScript health;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+        var playerdamage = GameObject.Find("Player");
+        health = playerdamage.GetComponent<HealthScript>();
     }
 
     private void spawnEnemy()
@@ -51,15 +55,25 @@ public class EnemyBehavior : MonoBehaviour
         rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
     }
 
-    public void Die()
+
+    private void EnemyAttack()
     {
-        //private void OnTriggerEnter2D(Collider2D collision)
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
         {
-            //if (collision.CompareTag("Player"))
+            if (collision.CompareTag("Player"))
             {
-                
+                health.Damage(damage);
             }
         }
+
+    }
+    public void Die()
+    {
 
     }
 
