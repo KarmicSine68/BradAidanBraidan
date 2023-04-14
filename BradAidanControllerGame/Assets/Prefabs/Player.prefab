@@ -17,9 +17,10 @@ GameObject:
   - component: {fileID: 545306854083311190}
   - component: {fileID: -4298160447811276586}
   - component: {fileID: 5750795456082626397}
+  - component: {fileID: 2194087418202697190}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -581166187
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 823ee507dc17cb5429ae5099fe96a017, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -105,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 150
   className: 
+  Sprite1: {fileID: 0}
+  Sprite2: {fileID: 0}
   facingLeft: 0
 --- !u!50 &5517215403573969703
 Rigidbody2D:
@@ -249,3 +252,27 @@ MonoBehaviour:
   player: {fileID: 5517215403573969755}
   MagicPrefab: {fileID: 4456747234599977050, guid: 3211f96da1ded624c9f226fe284482ff, type: 3}
   ProjectileSpeed: 30
+--- !u!114 &2194087418202697190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5517215403573969755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e1133ff9ccb204bb722541ac27e723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxhealth: 100
+  health: 100
+  HealthBar: {fileID: 5517215403573969755}
+  HealthSprite1: {fileID: 2800000, guid: 7c3affba7c633f94ea52a77d5229dc8f, type: 3}
+  HealthSprite2: {fileID: 2800000, guid: e7e666ba756575f4882168c1c0b21813, type: 3}
+  HealthSprite3: {fileID: 2800000, guid: 94d961f5b7681474b96dfc5389e6fb1e, type: 3}
+  HealthSprite4: {fileID: 2800000, guid: 646ad83b34fa5074089277f8cd0d37b8, type: 3}
+  HealthSprite5: {fileID: 2800000, guid: a85b732751348fe4c813ed52e478328a, type: 3}
+  HealthSprite6: {fileID: 2800000, guid: 74cd53606b3389e4e908f5ddb089cab1, type: 3}
+  HealthSprite7: {fileID: 2800000, guid: 40c984569e51f024f8fda255ffa41bcf, type: 3}
+  HealthSprite8: {fileID: 2800000, guid: 7667bd111093ecc46b08fdec35854762, type: 3}
+  HealthSprite9: {fileID: 2800000, guid: 88d75f067f72d2d45a2b2b856c47d224, type: 3}

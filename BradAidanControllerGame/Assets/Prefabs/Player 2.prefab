@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 757295418850673581}
   m_Layer: 0
   m_Name: Player 2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,6 +104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 150
   className: 
+  Sprite1: {fileID: 0}
+  Sprite2: {fileID: 0}
   facingLeft: 0
 --- !u!50 &757295418850673582
 Rigidbody2D:

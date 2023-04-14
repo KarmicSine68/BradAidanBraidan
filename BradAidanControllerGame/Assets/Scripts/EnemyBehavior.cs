@@ -20,7 +20,6 @@ public class EnemyBehavior : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         var playerdamage = GameObject.Find("Player");
-        health = playerdamage.GetComponent<HealthScript>();
     }
 
     private void spawnEnemy()
@@ -65,10 +64,8 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (collision.CompareTag("Player"))
-            {
+            health = collision.GetComponent<HealthScript>();
                 health.Damage(damage);
-            }
         }
 
     }
