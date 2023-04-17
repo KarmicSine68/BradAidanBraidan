@@ -15,6 +15,8 @@ public class AttackScript : MonoBehaviour
     public Ranger Rplayer;
     public GameObject RightAttackArea;
     public GameObject LeftAttackArea;
+    public Sprite Ranger;
+    public Sprite RangerAttack;
     PlayerControls controls;
     public bool HasAttacked;
     public float timer;
@@ -25,6 +27,7 @@ public class AttackScript : MonoBehaviour
         controls = new PlayerControls();
 
         controls.PlayerActions.Light.performed += ctx => Light();
+        Ranger = GetComponent<SpriteRenderer>().sprite;
     }
 
     private void Light()
@@ -34,23 +37,35 @@ public class AttackScript : MonoBehaviour
 
     public void Attack()
     {
-        if (HasAttacked == true)
+        if (HasAttacked == false)
         {
-            timer -= Time.deltaTime;
-        }
-
-        if (timer <= 0)
-        {
-            timer = 2f;
-            HasAttacked = false;
-            RightAttackArea.SetActive(false);
-            LeftAttackArea.SetActive(false);
+            RightAttack();
+            LeftAttack();
+            StartCoroutine(AttackTimer());
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator AttackTimer()
     {
+        yield return new WaitForSeconds(0.2f);
+        HasAttacked = false;
+        RightAttackArea.SetActive(false);
+        LeftAttackArea.SetActive(false);
+    }
+
+
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if (HasAttacked == true)
+        {
+            GetComponent<SpriteRenderer>().sprite = RangerAttack;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = Ranger;
+        }
         
     }
 

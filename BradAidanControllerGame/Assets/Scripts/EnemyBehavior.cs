@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    public Transform player;
+    public GameObject player;
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 movement;
     public GameObject enemyPrefab;
-    public float respawnTime = 1.0f;
+    public float respawnTime = 5f;
     private SpriteRenderer mySpriteRenderer;
     public int damage;
     public HealthScript health;
@@ -19,12 +19,12 @@ public class EnemyBehavior : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
-        var playerdamage = GameObject.Find("Player");
+        
     }
 
-    private void spawnEnemy()
+    public void spawnEnemy()
     {
-        GameObject e = Instantiate(enemyPrefab) as GameObject;
+        GameObject e = Instantiate(enemyPrefab , new Vector2(6, 0) , Quaternion.identity) as GameObject;
     }
     IEnumerator enemyWave()
     {
@@ -32,6 +32,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             yield return new WaitForSeconds(respawnTime);
             spawnEnemy();
+
         }
     }
 
@@ -39,11 +40,17 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = player.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        mySpriteRenderer.flipX = true;
-        direction.Normalize();
-        movement = direction;
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player != null)
+        {
+            Vector3 direction = player.transform.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            mySpriteRenderer.flipX = true;
+            direction.Normalize();
+            movement = direction;
+        }
+        
     }
     private void FixedUpdate()
     {
@@ -66,6 +73,10 @@ public class EnemyBehavior : MonoBehaviour
         {
             health = collision.GetComponent<HealthScript>();
                 health.Damage(damage);
+        }
+        if (collision.CompareTag("Magic"))
+        {
+            Destroy(gameObject, 5f);
         }
 
     }
