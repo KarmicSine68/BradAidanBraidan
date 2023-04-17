@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         EnemyBehavior.cs
+// Author :            Aidan Ratcliffe
+// Creation Date :     April 9th, 2023
+//
+// Brief Description : Enemy AI and spawning
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

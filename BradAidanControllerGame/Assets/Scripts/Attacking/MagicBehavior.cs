@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         MagicBehavior.cs
+// Author :            Aidan Ratcliffe
+// Creation Date :     April 11th, 2023
+//
+// Brief Description : Code for Magic attack
+*****************************************************************************/
 using System;
 using System.Collections;
 using System.Collections.Generic;

@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         HealthScript.cs
+// Author :            Aidan Ratcliffe
+// Creation Date :     April 9th, 2023
+//
+// Brief Description : Health for the player
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

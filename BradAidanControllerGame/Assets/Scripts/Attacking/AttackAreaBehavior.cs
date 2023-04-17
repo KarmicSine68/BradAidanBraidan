@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         AttackAreaBehavior.cs
+// Author :            Aidan Ratcliffe
+// Creation Date :     April 12th, 2023
+//
+// Brief Description : Code for Ranger's Attacking Area 
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

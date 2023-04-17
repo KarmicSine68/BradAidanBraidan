@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         MainMenu.cs
+// Author :            Aidan Ratcliffe
+// Creation Date :     April 16th, 2023
+//
+// Brief Description : Code for Main Menu Screen
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

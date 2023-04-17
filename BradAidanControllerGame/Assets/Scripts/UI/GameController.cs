@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         GameController.cs
+// Author :            Aidan Ratcliffe
+// Creation Date :     April 17th, 2023
+//
+// Brief Description : Where all the magic happens 
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
