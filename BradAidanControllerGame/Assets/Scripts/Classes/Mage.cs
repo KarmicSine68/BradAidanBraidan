@@ -35,7 +35,15 @@ public class Mage : ClassChanger
         float distance = difference.magnitude;
         Vector2 direction = difference / distance;
         direction.Normalize();
-        ShootMagic(direction);
+        PlayerBehaviour pb = FindObjectOfType<PlayerBehaviour>();
+        if(pb.facingLeft)
+        {
+            ShootMagic(-direction);
+        }
+        else
+        {
+            ShootMagic(direction);
+        }
     }
 
     void ShootMagic(Vector2 direction)

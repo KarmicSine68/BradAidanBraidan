@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class HealthScript : MonoBehaviour
 {
@@ -93,8 +94,7 @@ public class HealthScript : MonoBehaviour
 
     public void Die()
     {
-        gameObject.SetActive(false);
-        //SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("Main Menu");
         //Invoke("Respwan", 5f);
     }
 

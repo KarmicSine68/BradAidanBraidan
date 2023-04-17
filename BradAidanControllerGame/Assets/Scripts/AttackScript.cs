@@ -28,6 +28,8 @@ public class AttackScript : MonoBehaviour
 
         controls.PlayerActions.Light.performed += ctx => Light();
         Ranger = GetComponent<SpriteRenderer>().sprite;
+        RightAttackArea.SetActive(false);
+        LeftAttackArea.SetActive(false);
     }
 
     private void Light()

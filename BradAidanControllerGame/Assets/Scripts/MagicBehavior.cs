@@ -25,7 +25,7 @@ public class MagicBehavior : MonoBehaviour
             Destroy(gameObject);
         }
 
-        else if(other.CompareTag("Player") != true)
+        else if(other.CompareTag("Player") != true || other.CompareTag("AttackArea") != true)
         {
             Destroy(gameObject, 0.1f);
         }
