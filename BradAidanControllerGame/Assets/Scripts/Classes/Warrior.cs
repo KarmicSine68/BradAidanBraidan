@@ -16,7 +16,7 @@ public class Warrior : ClassChanger
 
     //Time variables used for coroutines
     private float attackDelayTime;
-    private float comboCancelTime;
+    private float comboCancelTime = 2f;
 
     //Bool to make sure players can't attack until the previous attack
     //has finished
@@ -41,9 +41,22 @@ public class Warrior : ClassChanger
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        //After the first hit is thrown, activates a timer that ends the combo
+        //early if an attack isn't used fast enough
+        if(firstHit != "")
+        {
+            comboCancelTime -= Time.deltaTime;
+
+            //Cancels the combo early
+            if (comboCancelTime <= 0)
+            {
+                firstHit = "";
+                secondHit = "";
+                Debug.Log("Combo canceled");
+            }
+        }
     }
 
     /// <summary>
@@ -94,6 +107,7 @@ public class Warrior : ClassChanger
         if (firstHit == "")
         {
             firstHit = type;
+            comboCancelTime = 2f;
         }
         //If the first variable has a value, it then checks to see if
         //the second hit has a value
@@ -108,16 +122,19 @@ public class Warrior : ClassChanger
                     case "Light":
                         comboNum = 1;
                         secondHit = type;
+                        comboCancelTime = 2f;
                         break;
 
                     case "Medium":
                         comboNum = 2;
                         secondHit = type;
+                        comboCancelTime = 2f;
                         break;
 
                     case "Heavy":
                         comboNum = 3;
                         secondHit = type;
+                        comboCancelTime = 2f;
                         break;
 
                     default:
@@ -131,11 +148,13 @@ public class Warrior : ClassChanger
                     case "Light":
                         comboNum = 4;
                         secondHit = type;
+                        comboCancelTime = 2f;
                         break;
 
                     case "Medium":
                         comboNum = 5;
                         secondHit = type;
+                        comboCancelTime = 2f;
                         break;
 
                     default:
@@ -149,11 +168,13 @@ public class Warrior : ClassChanger
                     case "Medium":
                         comboNum = 6;
                         secondHit = type;
+                        comboCancelTime = 2f;
                         break;
 
                     case "Heavy":
                         comboNum = 7;
                         secondHit = type;
+                        comboCancelTime = 2f;
                         break;
 
                     default:
@@ -344,6 +365,7 @@ public class Warrior : ClassChanger
         yield return new WaitForSeconds(comboCancelTime);
         firstHit = "";
         secondHit = "";
+        Debug.Log("Combo ended");
     }
 
     private void OnEnable()
