@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 22f60bd697e55a24b8eb46b934c37915
   - enabled: 1
+    path: Assets/Scenes/BradScene.unity
+    guid: 582d499bd316ce045bb3fe0b8fcc1824
+  - enabled: 1
     path: Assets/Scenes/AidanScene.unity
     guid: 9aebc1c9e24d4d24bb6402ccc2154e9e
   - enabled: 1
