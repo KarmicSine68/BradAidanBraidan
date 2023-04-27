@@ -7,22 +7,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Warrior : ClassChanger
 {
     PlayerControls controls;
 
-    [SerializeField] GameObject weapon;
+    //Input variables to make sure both players don't attack when one
+    //person presses an input.
+    InputActionAsset inputAsset;
+    InputActionMap inputMap;
+    InputAction lightAttack;
+    InputAction mediumAttack;
+    InputAction heavyAttack;
 
-    //Time variables used for coroutines
+    //Prefabs of the light, medium, and heavy attacks.
+    //Used to play the attack animations.
+    [SerializeField] private GameObject lightWeapon;
+    [SerializeField] private GameObject mediumWeapon;
+    [SerializeField] private GameObject heavyWeapon;
+
+    //Time variables used for coroutines.
     private float attackDelayTime;
     private float comboCancelTime = 2f;
 
     //Bool to make sure players can't attack until the previous attack
-    //has finished
+    //has finished.
     private bool canAttack = true;
 
-    //Used to store what attack and where it is in the combo
+    //Used to store what attack and where it is in the combo.
     private string firstHit = "";
     private string secondHit = "";
 
@@ -33,11 +46,15 @@ public class Warrior : ClassChanger
 
     private void Awake()
     {
-        controls = new PlayerControls();
+        inputAsset = this.GetComponent<PlayerInput>().actions;
+        inputMap = inputAsset.FindActionMap("PlayerActions");
+        lightAttack = inputMap.FindAction("Light");
+        mediumAttack = inputMap.FindAction("Medium");
+        heavyAttack = inputMap.FindAction("Heavy");
 
-        controls.PlayerActions.Light.performed += ctx => Light();
-        controls.PlayerActions.Medium.performed += ctx => Medium();
-        controls.PlayerActions.Heavy.performed += ctx => Heavy();
+        lightAttack.performed += ctx => Light();
+        mediumAttack.performed += ctx => Medium();
+        heavyAttack.performed += ctx => Heavy();
     }
 
     // Update is called once per frame
@@ -356,25 +373,13 @@ public class Warrior : ClassChanger
         Debug.Log("Can attack");
     }
 
-    /// <summary>
-    /// Ends a combo early if a player doesn't attack in time
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator ComboCancel()
-    {
-        yield return new WaitForSeconds(comboCancelTime);
-        firstHit = "";
-        secondHit = "";
-        Debug.Log("Combo ended");
-    }
-
     private void OnEnable()
     {
-        controls.PlayerActions.Enable();
+        inputMap.Enable();
     }
 
     private void OnDisable()
     {
-        controls.PlayerActions.Disable();
+        inputMap.Disable();
     }
 }
