@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class MagicBehavior : MonoBehaviour
 {
@@ -24,7 +25,30 @@ public class MagicBehavior : MonoBehaviour
             {
                 GameController gc = FindObjectOfType<GameController>();
                 gc.EnemyCounter++;
-                eb.spawnEnemy();
+                if (SceneManager.GetActiveScene().name != "AidanScene")
+                {
+                    if (gc.EnemyCounter <= 10)
+                    {
+                        eb.spawnEnemy();
+                    }
+                    else if (gc.EnemyCounter <= 20)
+                    {
+                        eb.spawnEnemy1();
+                    }
+                    else if (gc.EnemyCounter <= 30)
+                    {
+                        eb.spawnEnemy2();
+
+                    }
+                }
+                else if (gc.EnemyCounter < 10)
+                {
+                    eb.spawnEnemy();
+                }
+                else if(gc.EnemyCounter >= 10)
+                {
+                    SceneManager.LoadScene("Level1");
+                }
                 hasSpawned = true;
 
             }

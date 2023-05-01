@@ -21,6 +21,7 @@ public class EnemyBehavior : MonoBehaviour
     public int damage;
     public HealthScript health;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,15 +34,50 @@ public class EnemyBehavior : MonoBehaviour
     {
         GameObject e = Instantiate(enemyPrefab , new Vector2(6, 0) , Quaternion.identity) as GameObject;
     }
+
+    public void spawnEnemy1()
+    {
+        GameObject e = Instantiate(enemyPrefab, new Vector2(14, 7), Quaternion.identity) as GameObject;
+    }
+
+    public void spawnEnemy2()
+    {
+        GameObject e = Instantiate(enemyPrefab, new Vector2(14, -7), Quaternion.identity) as GameObject;
+    }
+
     IEnumerator enemyWave()
     {
-        while (true)
+        for (int i = 0; i < 10; i++)
         {
             yield return new WaitForSeconds(respawnTime);
             spawnEnemy();
 
         }
+        enemyWave1();
+        StopCoroutine(enemyWave());
     }
+    IEnumerator enemyWave1()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            yield return new WaitForSeconds(respawnTime);
+            spawnEnemy();
+
+        }
+        enemyWave2();
+        StopCoroutine(enemyWave1());
+    }
+    IEnumerator enemyWave2()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            yield return new WaitForSeconds(respawnTime);
+            spawnEnemy();
+
+        }
+        StopCoroutine(enemyWave2());
+    }
+    
 
 
     // Update is called once per frame

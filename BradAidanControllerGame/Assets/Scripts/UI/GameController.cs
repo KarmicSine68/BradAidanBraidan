@@ -21,6 +21,11 @@ public class GameController : MonoBehaviour
     public GameObject StartText;
     public GameObject Ranger;
     public PlayerInputManager pim;
+    public GameObject CameraBorder;
+    //public GameObject MovementText;
+    //public GameObject LightAttackText;
+    //public GameObject MediumAttackText;
+    //public GameObject HeavyAttackText;
 
     // Start is called before the first frame update
     void Start()
@@ -42,12 +47,36 @@ public class GameController : MonoBehaviour
 
         if (EnemyCounter >= 10)
         {
-            SceneManager.LoadScene("WinScreen");
+            if(GameObject.Find("CameraBorder") != null)
+            {
+                GameObject.Find("CameraBorder").SetActive(false);
+            }
+            
         }
     }
 
     void deletetext()
     {
         Destroy(StartText);
+    }
+
+    public void MovementText()
+    {
+
+    }
+
+    public void LightAttackText()
+    {
+
+    }
+
+    public void MediumAttackText()
+    {
+
+    }
+
+    public void HeavyAttack()
+    {
+
     }
 }
