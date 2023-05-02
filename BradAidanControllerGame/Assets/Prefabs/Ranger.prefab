@@ -185,7 +185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5390286530158159346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2026, y: -0.0326, z: 0}
+  m_LocalPosition: {x: -10.25, y: 0, z: 0}
   m_LocalScale: {x: 0.39147213, y: 0.39147213, z: 0.39147213}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -339,6 +339,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   className: 
+  lightWeapon: {fileID: 0}
+  mediumWeapon: {fileID: 0}
+  heavyWeapon: {fileID: 0}
 --- !u!114 &757295418850673581
 MonoBehaviour:
   m_ObjectHideFlags: 0
