@@ -188,9 +188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d96b89538968fc4b87b9d0d630bcb93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  className: 
-  weapon: {fileID: 0}
+  lightWeapon: {fileID: 8257073426022759382, guid: 3e0516f57b3416341a588ee53aa2a110, type: 3}
+  mediumWeapon: {fileID: 0}
+  heavyWeapon: {fileID: 0}
 --- !u!114 &2170396698679461832
 MonoBehaviour:
   m_ObjectHideFlags: 0

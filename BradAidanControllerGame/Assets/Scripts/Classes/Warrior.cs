@@ -9,9 +9,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Warrior : ClassChanger
+public class Warrior : MonoBehaviour
 {
-    PlayerControls controls;
+    PlayerBehaviour player;
 
     //Input variables to make sure both players don't attack when one
     //person presses an input.
@@ -46,6 +46,8 @@ public class Warrior : ClassChanger
 
     private void Awake()
     {
+        player = new PlayerBehaviour();
+
         inputAsset = this.GetComponent<PlayerInput>().actions;
         inputMap = inputAsset.FindActionMap("PlayerActions");
         lightAttack = inputMap.FindAction("Light");
@@ -76,6 +78,18 @@ public class Warrior : ClassChanger
         }
     }
 
+    private void AttackAnimation(GameObject attack)
+    {
+        Vector3 leftRotate = new Vector3(0, 180, 0);
+        Vector3 weaponPos = new Vector3(transform.position.x + .4f, 
+            transform.position.y - .2f, transform.position.z);
+        GameObject weapon = Instantiate(attack, weaponPos, Quaternion.identity);
+        if(player.facingLeft == false)
+        {
+            weapon.transform.rotation = Quaternion.EulerAngles(0, 180, 0);
+        }
+    }
+
     /// <summary>
     /// Executes the light version of the chain attack
     /// </summary>
@@ -84,6 +98,7 @@ public class Warrior : ClassChanger
         if (canAttack)
         {
             ComboOrder("Light");
+            //AttackAnimation(lightWeapon);
         }
     }
 
@@ -297,13 +312,13 @@ public class Warrior : ClassChanger
                     switch (type)
                     {
                         case "Medium":
-                            Debug.Log("Combo: M,H,M");
+                            Debug.Log("Combo: M,M,M");
                             firstHit = "";
                             secondHit = "";
                             break;
 
                         case "Heavy":
-                            Debug.Log("Combo: M,H,H");
+                            Debug.Log("Combo: M,M,H");
                             firstHit = "";
                             secondHit = "";
                             break;

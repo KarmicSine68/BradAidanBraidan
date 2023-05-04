@@ -14,7 +14,6 @@ using UnityEngine.SceneManagement;
 
 public class MagicBehavior : MonoBehaviour
 {
-
     public bool hasSpawned;
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -47,7 +46,7 @@ public class MagicBehavior : MonoBehaviour
                 }
                 else if(gc.EnemyCounter >= 10)
                 {
-                    SceneManager.LoadScene("Level1");
+                    SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
                 }
                 hasSpawned = true;
 

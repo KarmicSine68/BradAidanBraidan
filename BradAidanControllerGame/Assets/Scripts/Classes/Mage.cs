@@ -20,11 +20,17 @@ public class Mage : ClassChanger
 
     public float ProjectileSpeed;
 
+    InputActionAsset inputAsset;
+    InputActionMap inputMap;
+    InputAction lightAttack;
+
     private void Awake()
     {
-        controls = new PlayerControls();
+        inputAsset = this.GetComponent<PlayerInput>().actions;
+        inputMap = inputAsset.FindActionMap("PlayerActions");
+        lightAttack = inputMap.FindAction("Light");
 
-        controls.PlayerActions.Light.performed += ctx => Light();
+        lightAttack.performed += ctx => Light();
     }
 
     private void Light()
@@ -61,11 +67,11 @@ public class Mage : ClassChanger
 
     private void OnEnable()
     {
-        controls.PlayerActions.Enable();
+        inputMap.Enable();
     }
 
     private void OnDisable()
     {
-        controls.PlayerActions.Disable();
+        inputMap.Disable();
     }
 }
