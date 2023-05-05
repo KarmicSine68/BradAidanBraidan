@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 2170396698679461829}
   - component: {fileID: 2170396698679461834}
   - component: {fileID: 2170396698679461835}
-  - component: {fileID: 2170396698679461832}
   - component: {fileID: 6549627482814519488}
   m_Layer: 8
   m_Name: Player
@@ -191,21 +190,6 @@ MonoBehaviour:
   lightWeapon: {fileID: 8257073426022759382, guid: 3e0516f57b3416341a588ee53aa2a110, type: 3}
   mediumWeapon: {fileID: 0}
   heavyWeapon: {fileID: 0}
---- !u!114 &2170396698679461832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4850832304450202478}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 704168400a4d17d49aa544580fabdbd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  className: 
-  meleeWeapon: {fileID: 0}
 --- !u!60 &6549627482814519488
 PolygonCollider2D:
   m_ObjectHideFlags: 0

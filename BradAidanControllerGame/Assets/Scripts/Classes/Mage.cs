@@ -54,9 +54,13 @@ public class Mage : ClassChanger
 
     void ShootMagic(Vector2 direction)
     {
-        GameObject m = Instantiate(MagicPrefab) as GameObject;
-        m.transform.position = player.transform.position;
-        m.GetComponent<Rigidbody2D>().velocity = direction * ProjectileSpeed;
+        //Checks to make sure the mage script is enabled
+        if (gameObject.GetComponent<Mage>().enabled)
+        {
+            GameObject m = Instantiate(MagicPrefab) as GameObject;
+            m.transform.position = player.transform.position;
+            m.GetComponent<Rigidbody2D>().velocity = direction * ProjectileSpeed;
+        }
     }
 
     // Update is called once per frame

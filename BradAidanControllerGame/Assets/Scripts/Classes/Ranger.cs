@@ -27,7 +27,7 @@ public class Ranger : ClassChanger
     /// </summary>
     private void Awake()
     {
-        playerBehaviour = new PlayerBehaviour();
+        //playerBehaviour = new PlayerBehaviour();
 
         inputAsset = this.GetComponent<PlayerInput>().actions;
         inputMap = inputAsset.FindActionMap("PlayerActions");

@@ -28,19 +28,39 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private Sprite Sprite2;
     public bool facingLeft;
 
+    //Makes it so one player can't select both classes
+    private bool selected;
+
     /// <summary>
     /// Finds the name of a gameObject that the player is colliding with
     /// </summary>
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        MyName(collision.gameObject.name);
+        if(collision.gameObject.name == "Fighter" && !selected)
+        {
+            gameObject.GetComponent<Warrior>().enabled = true;
+            gameObject.GetComponent<Mage>().enabled = false;
+            gameObject.GetComponent<SpriteRenderer>().sprite = Sprite2;
+
+            selected = true;
+            Destroy(collision.gameObject);
+        }
+        if(collision.gameObject.name == "Mage" && !selected)
+        {
+            gameObject.GetComponent<Warrior>().enabled = false;
+            gameObject.GetComponent<Mage>().enabled = true;
+            gameObject.GetComponent<SpriteRenderer>().sprite = Sprite1;
+
+            selected = true;
+            Destroy(collision.gameObject);
+        }
     }
 
     /// <summary>
     /// Takes the name of the gameObject and changes the class accordingly
     /// </summary>
-    private void MyName(string type)
+   /* private void MyName(string type)
     {
         switch(type)
         {
@@ -64,7 +84,7 @@ public class PlayerBehaviour : MonoBehaviour
             default:
                 break;
         }
-    }
+    }*/
 
     /// <summary>
     /// Detects input and executes code
@@ -82,8 +102,13 @@ public class PlayerBehaviour : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
 
         facingLeft = false;
+
+        selected = false;
     }
 
+    /// <summary>
+    /// Sees if the player is facing left or right
+    /// </summary>
     private void Orientation()
     {
         if (facingLeft)

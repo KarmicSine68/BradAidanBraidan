@@ -14,6 +14,7 @@ using UnityEngine.SceneManagement;
 
 public class MagicBehavior : MonoBehaviour
 {
+
     public bool hasSpawned;
     private void OnTriggerEnter2D(Collider2D other)
     {
