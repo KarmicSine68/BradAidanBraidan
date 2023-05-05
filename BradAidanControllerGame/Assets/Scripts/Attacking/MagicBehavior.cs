@@ -20,7 +20,7 @@ public class MagicBehavior : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            EnemyBehavior eb = FindObjectOfType<EnemyBehavior>();
+            /*EnemyBehavior eb = FindObjectOfType<EnemyBehavior>();
             if(hasSpawned == false)
             {
                 GameController gc = FindObjectOfType<GameController>();
@@ -51,7 +51,7 @@ public class MagicBehavior : MonoBehaviour
                 }
                 hasSpawned = true;
 
-            }
+            }*/
             Destroy(other.gameObject, 0.1f);
             Destroy(gameObject);
         }

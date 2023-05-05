@@ -30,7 +30,7 @@ public class EnemyBehavior : MonoBehaviour
         
     }
 
-    public void spawnEnemy()
+    /*public void spawnEnemy()
     {
         GameObject e = Instantiate(enemyPrefab , new Vector2(6, 0) , Quaternion.identity) as GameObject;
     }
@@ -76,7 +76,7 @@ public class EnemyBehavior : MonoBehaviour
 
         }
         StopCoroutine(enemyWave2());
-    }
+    }*/
     
 
 
@@ -89,7 +89,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             Vector3 direction = player.transform.position - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            mySpriteRenderer.flipX = true;
+            //mySpriteRenderer.flipX = true;
             direction.Normalize();
             movement = direction;
         }

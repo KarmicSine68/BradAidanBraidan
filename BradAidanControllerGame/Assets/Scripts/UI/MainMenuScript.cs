@@ -14,7 +14,7 @@ public class MainMenuScript : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene("AidanScene");
+        SceneManager.LoadScene("CharacterSelect");
     }
 
     public void HowToPlay()

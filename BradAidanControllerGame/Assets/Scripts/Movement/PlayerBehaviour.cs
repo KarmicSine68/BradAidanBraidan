@@ -22,7 +22,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     Vector2 movement;
     Rigidbody2D rb2D;
-    [SerializeField] float speed = 150;
+    //[SerializeField] float speed = 150;
     [SerializeField] string className;
     [SerializeField] private Sprite Sprite1;
     [SerializeField] private Sprite Sprite2;

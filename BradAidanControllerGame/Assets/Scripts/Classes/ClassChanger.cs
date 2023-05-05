@@ -3,7 +3,7 @@
 // Author :            Brad Dixon
 // Creation Date :     March 23rd, 2023
 //
-// Brief Description : Determines the player's class
+// Brief Description : Gets rid of UI when a class is chosen
 *****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
@@ -11,16 +11,10 @@ using UnityEngine;
 
 public class ClassChanger : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private string className;
+    [SerializeField] private GameObject classText;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerBehaviour pb = GetComponent<PlayerBehaviour>();
-
-        if (collision.gameObject.name == "Player(Clone)")
-        {
-
-        }
+        
     }
 }

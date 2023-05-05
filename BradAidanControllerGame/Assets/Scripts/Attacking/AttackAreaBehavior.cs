@@ -23,7 +23,7 @@ public class AttackAreaBehavior : MonoBehaviour
             {
                 GameController gc = FindObjectOfType<GameController>();
                 gc.EnemyCounter++;
-                eb.spawnEnemy();
+                //eb.spawnEnemy();
                 hasSpawned = true;
                 StartCoroutine(Timer());
             }
