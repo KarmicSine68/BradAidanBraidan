@@ -10647,7 +10647,7 @@ MonoBehaviour:
   spawn6: {fileID: 674510284}
   spawn7: {fileID: 1585497815}
   spawn8: {fileID: 544812177}
-  enemy: {fileID: 5118415208479134662, guid: 9119d185e207826468fb37e9d0dc671b, type: 3}
+  enemy: {fileID: 8038890596731939217, guid: 4edc4dd09c9e6f042957b0acaab7b8dc, type: 3}
 --- !u!1 &885697971
 GameObject:
   m_ObjectHideFlags: 0
