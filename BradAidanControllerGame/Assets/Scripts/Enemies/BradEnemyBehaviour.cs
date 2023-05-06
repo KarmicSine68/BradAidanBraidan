@@ -15,7 +15,12 @@ public class BradEnemyBehaviour : MonoBehaviour
     private GameObject[] player = new GameObject[2];
     private GameObject target;
 
+    //Array used to damage the players in the range of the enemy
+    private GameObject[] attacking = new GameObject[2] { null, null };
+
     private bool inRange;
+
+    private bool facingLeft = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +31,45 @@ public class BradEnemyBehaviour : MonoBehaviour
     }
 
     //Enemies move towards players until one of them is range
-    void Update()
+    void FixedUpdate()
     {
         if (!inRange)
         {
             transform.position = Vector3.MoveTowards(transform.position,
                 target.transform.position, 2f * Time.deltaTime);
+        }
+
+        Orientation();
+    }
+
+    /// <summary>
+    /// Sees if the player is facing left or right
+    /// </summary>
+    private void Orientation()
+    {
+        if (facingLeft)
+        {
+            if (transform.position.x < target.transform.position.x)
+            {
+                transform.Rotate(0f, 180f, 0f);
+                facingLeft = false;
+            }
+            else if (transform.position.x > target.transform.position.x)
+            {
+                transform.Rotate(Vector3.zero);
+            }
+        }
+        else
+        {
+            if (transform.position.x > target.transform.position.x)
+            {
+                transform.Rotate(0f, 180f, 0f);
+                facingLeft = true;
+            }
+            else if (transform.position.x < target.transform.position.x)
+            {
+                transform.Rotate(Vector3.zero);
+            }
         }
     }
 
@@ -80,7 +118,23 @@ public class BradEnemyBehaviour : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             inRange = true;
-            StartCoroutine(Attack());
+
+            //Adds the players to the array to be attacked
+            if(attacking[0] == null)
+            {
+                //attacking[0] would be null if no players have
+                //entered range yet
+                attacking[0] = collision.gameObject;
+                //Having the coroutine here makes it so that the enemy
+                //doesn't attack twice
+                StartCoroutine(Attack());
+            }
+            else
+            {
+                //This means a second player is in range while the first player is also in range
+                attacking[1] = collision.gameObject;
+            }
+            //StartCoroutine(Attack());
         }
     }
 
@@ -93,6 +147,19 @@ public class BradEnemyBehaviour : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             inRange = false;
+
+            //If the second player leaves the range, it is no longer
+            //able to be attacked
+            if(attacking[1] != null)
+            {
+                attacking[1] = null;
+            }
+            //If the first player leaves the range, it is no longer
+            //able to be attacked
+            else
+            {
+                attacking[0] = null;
+            }
         }
     }
 
@@ -104,14 +171,23 @@ public class BradEnemyBehaviour : MonoBehaviour
     IEnumerator Attack()
     {
         yield return new WaitForSeconds(1.5f);
+
+        foreach (GameObject ctx in attacking)
+        {
+            if (ctx != null)
+            {
+                Debug.Log("Successfully attacked");
+            }
+            else
+            {
+                Debug.Log("Missed");
+            }
+        }
+
         if(inRange)
         {
-            Debug.Log("Successfully attacked");
             StartCoroutine(Attack());
-        }
-        else
-        {
-            Debug.Log("Missed");
+            Debug.Log("Attacking again");
         }
     }
 

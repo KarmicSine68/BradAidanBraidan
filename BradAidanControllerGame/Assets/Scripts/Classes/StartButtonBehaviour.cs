@@ -57,6 +57,13 @@ public class StartButtonBehaviour : MonoBehaviour
         yield return new WaitForSeconds(3f);
         if(onButton)
         {
+            GameObject[] choices = 
+                GameObject.FindGameObjectsWithTag("CharacterSelect");
+
+            foreach(GameObject temp in choices)
+            {
+                Destroy(temp);
+            }
             ctx.StartGame();
         }
     }

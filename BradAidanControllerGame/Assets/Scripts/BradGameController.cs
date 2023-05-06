@@ -145,6 +145,7 @@ public class BradGameController : MonoBehaviour
     {
         enemyCount = 10;
         tutorial = true;
+        GameStart();
         StartCoroutine(SpawnEnemies());
     }
 
@@ -155,7 +156,18 @@ public class BradGameController : MonoBehaviour
     {
         enemyCount = 30;
         tutorial = false;
+        GameStart();
         StartCoroutine(SpawnEnemies());
+    }
+
+    /// <summary>
+    /// Enables the game UI
+    /// </summary>
+    private void GameStart()
+    {
+        BradHealthBehaviour ctx = FindObjectOfType<BradHealthBehaviour>();
+
+        ctx.EnableHealth();
     }
 
     /// <summary>
@@ -182,7 +194,7 @@ public class BradGameController : MonoBehaviour
             tutorial = false;
             enemyCount = 30;
 
-            StartCoroutine(SpawnEnemies());
+           // StartCoroutine(SpawnEnemies());
         }
         else
         {
