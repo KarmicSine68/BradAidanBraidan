@@ -22,6 +22,7 @@ public class BradEnemyBehaviour : MonoBehaviour
     {
         player = GameObject.FindGameObjectsWithTag("Player");
         AssignTarget();
+        StartCoroutine(TargetClosest());
     }
 
     //Enemies move towards players until one of them is range
@@ -36,10 +37,6 @@ public class BradEnemyBehaviour : MonoBehaviour
 
     private void AssignTarget()
     {
-        //Local variables for both players
-        GameObject t1;
-        GameObject t2;
-
         //Used to record the distance of the players from the enemy
         float distance = 0;
 
@@ -99,6 +96,11 @@ public class BradEnemyBehaviour : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks to see if the enemy successfully hits a player at the end 
+    /// of their attack period
+    /// </summary>
+    /// <returns></returns>
     IEnumerator Attack()
     {
         yield return new WaitForSeconds(1.5f);
@@ -111,5 +113,20 @@ public class BradEnemyBehaviour : MonoBehaviour
         {
             Debug.Log("Missed");
         }
+    }
+
+    /// <summary>
+    /// After x seconds, enemy targets the closest player
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator TargetClosest()
+    {
+        int x = Random.Range(10, 16);
+
+        yield return new WaitForSeconds(x);
+
+        Debug.Log("Attacking closest");
+        AssignTarget();
+        StartCoroutine(TargetClosest());
     }
 }

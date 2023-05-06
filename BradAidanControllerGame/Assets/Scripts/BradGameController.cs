@@ -12,7 +12,6 @@ using UnityEngine;
 
 public class BradGameController : MonoBehaviour
 {
-    private bool gameStart = false;
     //Checks to see if the tutorial is being skipped
     private bool tutorial;
 
