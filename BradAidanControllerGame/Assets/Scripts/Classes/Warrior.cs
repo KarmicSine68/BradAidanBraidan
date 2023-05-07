@@ -25,17 +25,14 @@ public class Warrior : MonoBehaviour
     [SerializeField] private GameObject mediumWeapon;
     [SerializeField] private GameObject heavyWeapon;
 
+    MeleeBehaviour weapon;
+
     //Time variables used for coroutines.
     private float comboCancelTime = 2f;
 
     //Bool to make sure players can't attack until the previous attack
     //has finished.
     private bool canAttack = true;
-
-    //Checks to make sure the enemy is in the range of the attack
-    private bool inRange;
-
-    private GameObject target;
 
     //Used to store what attack and where it is in the combo.
     private string firstHit = "";
@@ -436,18 +433,20 @@ public class Warrior : MonoBehaviour
     /// attacks before sending another one
     /// </summary>
     /// <returns></returns>
-    IEnumerator AttackDelay(float attackDelayTime, GameObject weapon, int damage)
+    IEnumerator AttackDelay(float attackDelayTime, GameObject w, int damage)
     {
         canAttack = false;
-        weapon.SetActive(true);
+        w.SetActive(true);
+        weapon = w.GetComponent<MeleeBehaviour>();
+
         yield return new WaitForSeconds(attackDelayTime);
 
-        if(inRange)
+        if(weapon.inRange)
         {
-            target.SendMessage("Attacked", damage);
+            weapon.target.SendMessage("Attacked", damage);
             Debug.Log("Attacking");
         }
-        weapon.SetActive(false);
+        w.SetActive(false);
         canAttack = true;
         Debug.Log("Can attack");
     }
@@ -462,7 +461,7 @@ public class Warrior : MonoBehaviour
         inputMap.Disable();
     }
 
-    /// <summary>
+    /*/// <summary>
     /// Enables the check when an enemy is in range of an attack
     /// </summary>
     /// <param name="collision"></param>
@@ -482,5 +481,5 @@ public class Warrior : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         inRange = false;
-    }
+    }*/
 }

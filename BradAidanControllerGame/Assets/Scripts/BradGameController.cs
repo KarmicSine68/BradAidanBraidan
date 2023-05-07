@@ -147,6 +147,9 @@ public class BradGameController : MonoBehaviour
         tutorial = true;
         GameStart();
         StartCoroutine(SpawnEnemies());
+
+        gameObject.GetComponent<TutorialBehaviour>().enabled = true;
+        gameObject.GetComponent<TutorialBehaviour>().StartTutorial();
     }
 
     /// <summary>
@@ -179,7 +182,7 @@ public class BradGameController : MonoBehaviour
         {
             while(enemyCount > 0)
             {
-                spawnTime = (int)Random.Range(0, 5) + 1;
+                spawnTime = (int)Random.Range(0, 5) + 3;
                 while(spawnTime > 0)
                 {
                     spawnTime--;

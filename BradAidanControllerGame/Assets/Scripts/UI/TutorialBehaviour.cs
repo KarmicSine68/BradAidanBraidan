@@ -30,8 +30,6 @@ public class TutorialBehaviour : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        lightAttack.SetActive(true);
-
         controls = new PlayerControls();
 
         onLight = true;
@@ -42,10 +40,9 @@ public class TutorialBehaviour : MonoBehaviour
         controls.PlayerActions.Heavy.performed += ctx => ManageText();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartTutorial()
     {
-        
+        lightAttack.SetActive(true);
     }
 
     /// <summary>

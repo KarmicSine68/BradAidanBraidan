@@ -10511,7 +10511,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -67}
+  m_AnchoredPosition: {x: 0, y: -168.66}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &822677358
@@ -10695,6 +10695,7 @@ GameObject:
   - component: {fileID: 867967362}
   - component: {fileID: 867967361}
   - component: {fileID: 867967363}
+  - component: {fileID: 867967364}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -10757,6 +10758,21 @@ MonoBehaviour:
   spawn7: {fileID: 1585497815}
   spawn8: {fileID: 544812177}
   enemy: {fileID: 8038890596731939217, guid: 4edc4dd09c9e6f042957b0acaab7b8dc, type: 3}
+--- !u!114 &867967364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867967360}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f02c03fd2dabd034ebf3f3c3a47452d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightAttack: {fileID: 1427547427}
+  mediumAttack: {fileID: 892499212}
+  heavyAttack: {fileID: 822677356}
 --- !u!1 &885697971
 GameObject:
   m_ObjectHideFlags: 0
@@ -10823,7 +10839,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -67}
+  m_AnchoredPosition: {x: 0, y: -168.66}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &892499214
@@ -10846,7 +10862,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PressY to do a Medium Attack!
+  m_text: Press Y to do a Medium Attack!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11677,7 +11693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -67}
+  m_AnchoredPosition: {x: 0, y: -168.66}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1427547429
