@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BradHealthBehaviour : MonoBehaviour
 {
@@ -16,7 +17,9 @@ public class BradHealthBehaviour : MonoBehaviour
     [SerializeField] private Image health;
     [SerializeField] private GameObject healthBar;
 
-    float currentHealth, maxHealth = 100;
+    [SerializeField] float currentHealth, maxHealth = 100;
+
+    float healthSpeed;
 
     /// <summary>
     /// Makes sure the current health starts at the max health
@@ -33,12 +36,19 @@ public class BradHealthBehaviour : MonoBehaviour
     /// </summary>
     void Update()
     {
+        healthSpeed = 3 * Time.deltaTime;
+
         if(currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
         }
 
         DisplayHealth();
+
+        if(currentHealth <= 0)
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
     }
 
     /// <summary>
@@ -49,7 +59,7 @@ public class BradHealthBehaviour : MonoBehaviour
         //Visual display of health
         //Lerp can only use values between 0 and 1
         health.fillAmount = Mathf.Lerp(health.fillAmount,
-            (currentHealth / maxHealth), 3 * Time.deltaTime);
+            (currentHealth / maxHealth), healthSpeed);
 
         Color healthColor = Color.Lerp(Color.red, Color.green, 
             (currentHealth / maxHealth));
@@ -62,5 +72,17 @@ public class BradHealthBehaviour : MonoBehaviour
     public void EnableHealth()
     {
         healthBar.SetActive(true);
+    }
+
+    /// <summary>
+    /// Causes players to take damage from enemy attacks
+    /// </summary>
+    /// <param name="damage"></param>
+    public void Attacked(float damage)
+    {
+        if (currentHealth > 0)
+        {
+            currentHealth -= damage;
+        }
     }
 }

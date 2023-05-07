@@ -18,19 +18,34 @@ public class BradEnemyBehaviour : MonoBehaviour
     //Array used to damage the players in the range of the enemy
     private GameObject[] attacking = new GameObject[2] { null, null };
 
+    //How much damage the enemies do to the player
+    [SerializeField] private float damage;
+
     private bool inRange;
 
     private bool facingLeft = false;
 
-    // Start is called before the first frame update
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int currentHealth;
+
+    /// <summary>
+    /// Starts enemy code and makes sure enemy spawns with full health
+    /// </summary>
     void Start()
     {
+        //I only added this because otherwise it would consider the enemy to
+        //start with 0 health. Even if I did it where I declare the variable
+        maxHealth = 10;
+
+        currentHealth = maxHealth;
         player = GameObject.FindGameObjectsWithTag("Player");
         AssignTarget();
         StartCoroutine(TargetClosest());
     }
 
-    //Enemies move towards players until one of them is range
+    /// <summary>
+    /// Enemies move towards players until one of them is range
+    /// </summary>
     void FixedUpdate()
     {
         if (!inRange)
@@ -40,6 +55,25 @@ public class BradEnemyBehaviour : MonoBehaviour
         }
 
         Orientation();
+
+        //Enemy dies when health reaches 0
+        if(currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    /// <summary>
+    /// Enemy takes damage if player's attack connecrs
+    /// </summary>
+    public void Attacked(int damage)
+    {
+        if (currentHealth > 0)
+        {
+            currentHealth -= damage;
+
+            Debug.Log("took " + damage + " damage");
+        }
     }
 
     /// <summary>
@@ -176,7 +210,11 @@ public class BradEnemyBehaviour : MonoBehaviour
         {
             if (ctx != null)
             {
-                Debug.Log("Successfully attacked");
+                BradHealthBehaviour bhb = 
+                    FindObjectOfType<BradHealthBehaviour>();
+                {
+                    bhb.Attacked(damage);
+                }
             }
             else
             {
