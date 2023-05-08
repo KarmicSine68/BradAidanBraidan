@@ -33,62 +33,19 @@ public class BradGameController : MonoBehaviour
 
     [SerializeField] private GameObject enemy;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject counter;
+
+    /// <summary>
+    /// Makes sure the enemy counter starts disabled
+    /// </summary>
+    private void Start()
     {
-        spawnTime = 2;
+        counter.SetActive(false);
     }
 
     /// <summary>
-    /// Spawns enemies after x time
+    /// Spawns the enemies
     /// </summary>
-    private void FixedUpdate()
-    {
-        /*if(gameStart)
-        {
-            if(tutorial)
-            {
-                if(enemyCount > 0)
-                {
-                    while(spawnTime > 0)
-                    {
-                        spawnTime -= 1 * Time.deltaTime;
-                    }
-                    SpawnEnemy();
-                    spawnTime = Random.Range(0, 5) + 1;
-                    Debug.Log(spawnTime);
-                    enemyCount--;
-                }
-                else
-                {
-                    //Once all tutorial enemies are defeated, the tutorial
-                    //ends and the enemy count is set to that of wave 1
-                    tutorial = false;
-                    enemyCount = 30;
-                }
-            }
-            else
-            {
-                if (enemyCount > 0)
-                {
-                    while (spawnTime > 0)
-                    {
-                        spawnTime -= 1 * Time.deltaTime;
-                    }
-                    SpawnEnemy();
-                    spawnTime = (int) Random.Range(0, 5) + 1;
-                    Debug.Log(spawnTime);
-                    enemyCount--;
-                }
-                else
-                {
-                    Debug.Log("Game Over");
-                }
-            }
-        }*/
-    }
-
-    //Spawns an enemy at one of 8 spots
     private void SpawnEnemy()
     {
         //Randomizes the spawn location
@@ -150,6 +107,8 @@ public class BradGameController : MonoBehaviour
 
         gameObject.GetComponent<TutorialBehaviour>().enabled = true;
         gameObject.GetComponent<TutorialBehaviour>().StartTutorial();
+
+        gameObject.GetComponent<EnemyCounter>().Tutorial();
     }
 
     /// <summary>
@@ -161,6 +120,18 @@ public class BradGameController : MonoBehaviour
         tutorial = false;
         GameStart();
         StartCoroutine(SpawnEnemies());
+
+        gameObject.GetComponent<EnemyCounter>().Level1();
+    }
+
+    /// <summary>
+    /// Starts level 1 if tutorial is beaten
+    /// </summary>
+    public void BeginLevel()
+    {
+        enemyCount = 30;
+        StartCoroutine(SpawnEnemies());
+        gameObject.GetComponent<EnemyCounter>().Level1();
     }
 
     /// <summary>
@@ -169,6 +140,8 @@ public class BradGameController : MonoBehaviour
     private void GameStart()
     {
         BradHealthBehaviour ctx = FindObjectOfType<BradHealthBehaviour>();
+
+        counter.SetActive(true);
 
         ctx.EnableHealth();
     }
@@ -182,7 +155,7 @@ public class BradGameController : MonoBehaviour
         {
             while(enemyCount > 0)
             {
-                spawnTime = (int)Random.Range(0, 5) + 3;
+                spawnTime = (int)Random.Range(0, 5) + 1;
                 while(spawnTime > 0)
                 {
                     spawnTime--;

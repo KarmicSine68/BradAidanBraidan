@@ -77,7 +77,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 49
+  controlID: 97
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 50
+  controlID: 102
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 51
+  controlID: 103
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -568,10 +568,10 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 168.6}
-    m_SelectedIDs: 48650000
-    m_LastClickedID: 25928
-    m_ExpandedIDs: 0000000000650000406500004a65000000ca9a3b
+    scrollPos: {x: 0, y: 8.600006}
+    m_SelectedIDs: f4650000
+    m_LastClickedID: 26100
+    m_ExpandedIDs: 00000000e665000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -599,7 +599,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000000650000
+    m_ExpandedIDs: 00000000e6650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -626,7 +626,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300009e620000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -727,23 +727,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 0e660000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 7ac5ffff7cf7ffff7ef7ffffdaf7ffff0afbffff0cfbffff
+      m_ExpandedIDs: e6f6ffff2cf7ffff96f9ffffa4f9ffffaef9ffffbef9ffffd4f9ffff0cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: LightningAttack1 (1)
-        m_OriginalName: LightningAttack1 (1)
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -8636
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 
@@ -1000,7 +1000,7 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.3450488, y: -1.3099169, z: -9.9518175}
+    m_Target: {x: -1.4394207, y: 1.5138974, z: -10.020154}
     speed: 2
     m_Value: {x: -1.3450488, y: -1.3099169, z: -9.9518175}
   m_RenderMode: 0
@@ -1053,7 +1053,7 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 7.30627
+    m_Target: 14.139696
     speed: 2
     m_Value: 7.30627
   m_Ortho:

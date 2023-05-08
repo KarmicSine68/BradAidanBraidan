@@ -59,6 +59,8 @@ public class BradEnemyBehaviour : MonoBehaviour
         //Enemy dies when health reaches 0
         if(currentHealth <= 0)
         {
+            EnemyCounter ctx = FindObjectOfType<EnemyCounter>();
+            ctx.EnemyKilled();
             Destroy(gameObject);
         }
     }

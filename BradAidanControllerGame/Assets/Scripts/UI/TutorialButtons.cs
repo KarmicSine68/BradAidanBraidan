@@ -13,6 +13,8 @@ public class TutorialButtons : MonoBehaviour
 {
     //Text to be deleted with the button
     [SerializeField] private GameObject text;
+    [SerializeField] private GameObject otherText;
+    [SerializeField] private GameObject otherButton;
 
     //Used to determine if the button is the skip button
     [SerializeField] private bool skip;
@@ -36,6 +38,8 @@ public class TutorialButtons : MonoBehaviour
             }
 
             Destroy(text);
+            Destroy(otherButton);
+            Destroy(otherText);
             Destroy(gameObject);
         }
     }

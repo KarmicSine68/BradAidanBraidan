@@ -40,7 +40,7 @@ public class PlayerBehaviour : MonoBehaviour
         if(collision.gameObject.name == "Fighter" && !selected)
         {
             gameObject.GetComponent<Warrior>().enabled = true;
-            gameObject.GetComponent<Mage>().enabled = false;
+            gameObject.GetComponent<BradMage>().enabled = false;
             gameObject.GetComponent<SpriteRenderer>().sprite = Sprite2;
 
             selected = true;
@@ -49,42 +49,13 @@ public class PlayerBehaviour : MonoBehaviour
         if(collision.gameObject.name == "Mage" && !selected)
         {
             gameObject.GetComponent<Warrior>().enabled = false;
-            gameObject.GetComponent<Mage>().enabled = true;
+            gameObject.GetComponent<BradMage>().enabled = true;
             gameObject.GetComponent<SpriteRenderer>().sprite = Sprite1;
 
             selected = true;
             Destroy(collision.gameObject);
         }
     }
-
-    /// <summary>
-    /// Takes the name of the gameObject and changes the class accordingly
-    /// </summary>
-   /* private void MyName(string type)
-    {
-        switch(type)
-        {
-            case "Fighter":
-                gameObject.GetComponent<Ranger>().enabled = false;
-                gameObject.GetComponent<Warrior>().enabled = true;
-                gameObject.GetComponent<Mage>().enabled = false;
-                gameObject.GetComponent<SpriteRenderer>().sprite = Sprite2;
-                break;
-            case "Mage":
-                gameObject.GetComponent<Warrior>().enabled = false;
-                gameObject.GetComponent<Ranger>().enabled = false;
-                gameObject.GetComponent<Mage>().enabled = true;
-                gameObject.GetComponent<SpriteRenderer>().sprite = Sprite1;
-                break;
-            case "Ranger":
-                gameObject.GetComponent<Ranger>().enabled = true;
-                gameObject.GetComponent<Warrior>().enabled = false;
-                gameObject.GetComponent<Mage>().enabled = false;
-                break;
-            default:
-                break;
-        }
-    }*/
 
     /// <summary>
     /// Detects input and executes code
@@ -104,6 +75,9 @@ public class PlayerBehaviour : MonoBehaviour
         facingLeft = false;
 
         selected = false;
+
+        StartUI sui = FindObjectOfType<StartUI>();
+        //sui.PlayerJoined();
     }
 
     /// <summary>

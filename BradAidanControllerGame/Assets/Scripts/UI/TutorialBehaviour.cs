@@ -35,9 +35,9 @@ public class TutorialBehaviour : MonoBehaviour
         onLight = true;
         count = 0;
 
-        controls.PlayerActions.Light.performed += ctx => ManageText();
-        controls.PlayerActions.Medium.performed += ctx => ManageText();
-        controls.PlayerActions.Heavy.performed += ctx => ManageText();
+        controls.PlayerActions.Light.performed += ctx => ManageText("Light");
+        controls.PlayerActions.Medium.performed += ctx => ManageText("Medium");
+        controls.PlayerActions.Heavy.performed += ctx => ManageText("Heavy");
     }
 
     public void StartTutorial()
@@ -48,9 +48,17 @@ public class TutorialBehaviour : MonoBehaviour
     /// <summary>
     /// Changes the tutorial text after the condition has been met
     /// </summary>
-    private void ManageText()
+    private void ManageText(string type)
     {
-        if(onLight || onMedium || onHeavy)
+        if(onLight && type == "Light")
+        {
+            count++;
+        }
+        else if(onMedium && type == "Medium")
+        {
+            count++;
+        }
+        else if(onHeavy && type == "Heavy")
         {
             count++;
         }
