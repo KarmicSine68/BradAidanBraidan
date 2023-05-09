@@ -24,6 +24,27 @@ public class CharacterSelectController : MonoBehaviour
     [SerializeField] private GameObject background;
 
     /// <summary>
+    /// Makes sure the button can't be presses until both players 
+    /// have picked a class
+    /// </summary>
+    private void Start()
+    {
+        startArea.SetActive(false);
+    }
+
+    /// <summary>
+    /// Makes the button available once both players have selected a class
+    /// </summary>
+    private void Update()
+    {
+        GameObject button = GameObject.FindGameObjectWithTag("CharacterSelect");
+        if(button == null)
+        {
+            startArea.SetActive(true);
+        }
+    }
+
+    /// <summary>
     /// Destroys old UI and loads the next scene
     /// </summary>
     public void StartGame()
@@ -35,6 +56,7 @@ public class CharacterSelectController : MonoBehaviour
         Destroy(startingText);
         Destroy(startArea);
         Destroy(background);
+        Destroy(gameObject);
 
         SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
     }
