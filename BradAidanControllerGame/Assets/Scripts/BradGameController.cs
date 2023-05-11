@@ -132,6 +132,10 @@ public class BradGameController : MonoBehaviour
         enemyCount = 30;
         StartCoroutine(SpawnEnemies());
         gameObject.GetComponent<EnemyCounter>().Level1();
+
+        //Resets the players health to full
+        BradHealthBehaviour ctx = FindObjectOfType<BradHealthBehaviour>();
+        ctx.ResetHealth();
     }
 
     /// <summary>

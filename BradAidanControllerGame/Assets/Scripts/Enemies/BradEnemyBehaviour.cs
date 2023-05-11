@@ -28,6 +28,8 @@ public class BradEnemyBehaviour : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
 
+    [SerializeField] private AudioClip damageSound;
+
     /// <summary>
     /// Starts enemy code and makes sure enemy spawns with full health
     /// </summary>
@@ -74,7 +76,7 @@ public class BradEnemyBehaviour : MonoBehaviour
         {
             currentHealth -= damage;
 
-            Debug.Log("took " + damage + " damage");
+            AudioSource.PlayClipAtPoint(damageSound, Camera.main.transform.position);
         }
     }
 

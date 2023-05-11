@@ -19,6 +19,10 @@ public class BradHealthBehaviour : MonoBehaviour
 
     [SerializeField] float currentHealth, maxHealth = 100;
 
+    private AudioSource sound;
+
+    [SerializeField] AudioClip hitSound;
+
     float healthSpeed;
 
     /// <summary>
@@ -27,8 +31,13 @@ public class BradHealthBehaviour : MonoBehaviour
     /// </summary>
     void Start()
     {
+        sound = FindObjectOfType<Camera>().GetComponent<AudioSource>();
+
         currentHealth = maxHealth;
         healthBar.SetActive(false);
+
+        sound.volume = 0.2f;
+        sound.pitch = 1.5f;
     }
 
     /// <summary>
@@ -67,6 +76,14 @@ public class BradHealthBehaviour : MonoBehaviour
     }
 
     /// <summary>
+    /// Resets the players health to full when they complete the tutorial
+    /// </summary>
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
+    }
+
+    /// <summary>
     /// Makes it so the health bar is visible once the game starts
     /// </summary>
     public void EnableHealth()
@@ -82,7 +99,11 @@ public class BradHealthBehaviour : MonoBehaviour
     {
         if (currentHealth > 0)
         {
+            sound.clip = hitSound;
+
             currentHealth -= damage;
+
+            AudioSource.PlayClipAtPoint(hitSound, Camera.main.transform.position);
         }
     }
 }
