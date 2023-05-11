@@ -38,6 +38,8 @@ public class BradHealthBehaviour : MonoBehaviour
 
         sound.volume = 0.2f;
         sound.pitch = 1.5f;
+
+        sound.clip = hitSound;
     }
 
     /// <summary>
@@ -99,8 +101,6 @@ public class BradHealthBehaviour : MonoBehaviour
     {
         if (currentHealth > 0)
         {
-            sound.clip = hitSound;
-
             currentHealth -= damage;
 
             AudioSource.PlayClipAtPoint(hitSound, Camera.main.transform.position);
