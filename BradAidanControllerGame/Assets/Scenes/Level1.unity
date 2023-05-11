@@ -11349,6 +11349,7 @@ MonoBehaviour:
   healthBar: {fileID: 478077994}
   currentHealth: 0
   maxHealth: 100
+  hitSound: {fileID: 8300000, guid: 60e074f38c08b814b8e0e6a8cb01a8c7, type: 3}
 --- !u!1 &1063487309
 GameObject:
   m_ObjectHideFlags: 0

@@ -159,6 +159,7 @@ MonoBehaviour:
   damage: 5
   maxHealth: 0
   currentHealth: 10
+  damageSound: {fileID: 8300000, guid: 3df6c32adf5a61440a3569352153bd47, type: 3}
 --- !u!50 &8038890596731939220
 Rigidbody2D:
   serializedVersion: 4
