@@ -101,7 +101,7 @@ public class HealthScript : MonoBehaviour
 
     public void Die()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("LoseScene");
         //Invoke("Respwan", 5f);
     }
 
